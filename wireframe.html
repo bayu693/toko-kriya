@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wireframe — Toko Kriya Sidoarjo</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#f3f4f6;padding:40px 20px;color:#111827;}
+  h1{text-align:center;margin-bottom:6px;font-size:24px;}
+  .sub{text-align:center;color:#6b7280;margin-bottom:30px;font-size:14px;}
+  .grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;}
+  .page{width:340px;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.08);overflow:hidden;}
+  .page-head{background:#0d9488;color:#fff;padding:10px 14px;font-weight:700;font-size:15px;}
+  .page-head small{display:block;font-weight:400;font-size:11px;opacity:.85;}
+  .phone{background:#f9fafb;padding:6px;margin:10px;}
+  .screen{background:#fff;border:2px solid #d1d5db;border-radius:10px;height:520px;padding:10px;font-size:11px;color:#374151;position:relative;overflow:hidden;}
+  .phone{position:relative;}
+  .phone::before{content:'';display:block;width:60px;height:5px;background:#d1d5db;border-radius:3px;margin:0 auto 6px;}
+  .lbl{color:#9ca3af;font-size:9px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;}
+  .bar{background:#0d9488;color:#fff;border-radius:6px;padding:6px 8px;margin-bottom:8px;font-weight:600;font-size:10px;display:flex;justify-content:space-between;}
+  .bar span{opacity:.85;font-weight:400;}
+  .banner{background:linear-gradient(135deg,#0d9488,#0f766e);color:#fff;border-radius:8px;padding:16px;margin-bottom:8px;text-align:center;font-size:11px;}
+  .banner b{display:block;font-size:14px;margin-bottom:3px;}
+  .chips{display:flex;gap:5px;margin-bottom:8px;}
+  .chip{flex:1;background:#eef2f7;border:1px dashed #cbd5e1;border-radius:8px;padding:8px 4px;text-align:center;font-size:9px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+  .prod{background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:22px 6px 10px;text-align:center;position:relative;}
+  .prod::before{content:'◼';position:absolute;top:6px;left:6px;color:#cbd5e1;}
+  .prod .img{height:50px;background:#e7f5f0;border-radius:6px;margin-bottom:6px;}
+  .prod .nm{font-size:9px;font-weight:600;margin-bottom:2px;}
+  .prod .pr{color:#0d9488;font-weight:700;font-size:10px;}
+  .big{height:150px;background:#e7f5f0;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;color:#9ca3af;}
+  .btn{background:#0d9488;color:#fff;border-radius:6px;padding:9px;text-align:center;font-weight:700;font-size:11px;margin-top:8px;}
+  .btn.dark{background:#134e4a;}
+  .field{background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:8px;margin-bottom:6px;color:#9ca3af;}
+  .row{display:flex;justify-content:space-between;margin-bottom:4px;font-size:10px;}
+  .row b{color:#111827;}
+  .total{display:flex;justify-content:space-between;border-top:2px solid #e5e7eb;margin-top:6px;padding-top:6px;font-weight:700;font-size:11px;}
+  .note{max-width:340px;margin:12px auto 0;font-size:11px;color:#6b7280;line-height:1.5;text-align:center;}
+  .foot{border-top:1px solid #e5e7eb;padding:8px 12px;font-size:10px;color:#6b7280;text-align:center;}
+</style>
+</head>
+<body>
+<h1>Wireframe — Toko Kriya Sidoarjo</h1>
+<div class="sub">Sketsa Layout Mobile-First · 10 Halaman · Klik "Buka" untuk menuju halaman aslinya</div>
+
+<div class="grid">
+
+  <!-- LOGIN -->
+  <div class="page">
+    <div class="page-head">Login <a href="login.html" style="color:#fff;float:right;font-size:11px;text-decoration:underline;">Buka &rarr;</a></div>
+    <div class="phone"><div class="screen">
+      <div style="text-align:center;margin:24px 0 10px;">
+        <div style="width:56px;height:56px;border-radius:50%;background:#0d9488;color:#fff;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:24px;">K</div>
+        <b style="font-size:14px;">Login Akun</b>
+      </div>
+      <div class="lbl">Email</div><div class="field">nama@email.com</div>
+      <div class="lbl">Password</div><div class="field">••••••••</div>
+      <div class="btn">MASUK</div>
+      <div style="text-align:center;margin-top:10px;font-size:10px;">Belum punya akun? <b style="color:#0d9488;">Daftar</b></div>
+      <div style="text-align:center;margin-top:6px;font-size:10px;color:#6b7280;">Admin? <b style="color:#8b5a2b;">Login sebagai Admin</b></div>
+    </div></div>
+    <div class="foot">Form email + password · validasi · login admin terpisah</div>
+  </div>
+
+  <!-- REGISTER -->
+  <div class="page">
+    <div class="page-head">Register <a href="register.html" style="color:#fff;float:right;font-size:11px;text-decoration:underline;">Buka &rarr;</a></div>
+    <div class="phone"><div class="screen">
+      <div style="text-align:center;margin:14px 0 8px;"><b style="font-size:14px;">Daftar Akun</b></div>
+      <div class="field">Nama Lengkap</div>
+      <div class="field">Email</div>
+      <div class="field">Password</div>
+      <div class="field">Konfirmasi Password</div>
+      <div class="btn dark">DAFTAR</div>
+      <div style="text-align:center;margin-top:8px;font-size:10px;">Sudah punya akun? <b style="color:#0d9488;">Masuk</b></div>
+    </div></div>
+    <div class="foot">Form nama · email · password · validasi & konfirmasi</div>
+  </div>
+
+  <!-- HOME -->
+  <div class="page">
+    <div class="page-head">Home <a href="index.html" style="color:#fff;float:right;font-size:11px;text-decoration:underline;">Buka &rarr;</a></div>
+    <div class="phone"><div class="screen">
+      <div class="bar">☰ Kriya Sidoarjo <span>🛒0</span></div>
+      <div class="banner"><b>Promo Kriya Asli</b>Diskon hingga 30%</div>
+      <div class="lbl">Kategori</div>
+      <div class="chips">
+<div class="chip">Anyaman</div><div class="chip">Furniture</div><div class="chip">Batik</div><div class="chip">Aksesoris</div>
+      </div>
+      <div class="lbl">Produk Unggulan</div>
+      <div class="grid2">
+        <div class="prod"><div class="img"></div><div class="nm">Tas Anyaman</div><div class="pr">Rp85.000</div></div>
+        <div class="prod"><div class="img"></div><div class="nm">Meja Kayu</div><div class="pr">Rp120.000</div></div>
+        <div class="prod"><div class="img"></div><div class="nm">Batik Tulis</div><div class="pr">Rp250.000</div></div>
+        <div class="prod"><div class="img"></div><div class="nm">Gerabah</div><div class="pr">Rp65.000</div></div>
+      </div>
+    </div></div>
+    <div class="foot">Navbar · banner slider · kategori · produk unggulan</div>
+  </div>
+
+  <!-- KATALOG -->
+  <div class="page">
+    <div class="page-head">Katalog <a href="katalog.html" style="color:#fff;float:right;font-size:11px;text-decoration:underline;">Buka &rarr;</a></div>
+    <div class="phone"><div class="screen">
+      <div class="bar">☰ Katalog <span>🔍</span></div>
+      <div class="chips"><div class="chip">Semua</div><div class="chip">Anyaman</div><div class="chip">Furniture</div><div class="chip">Batik</div><div class="chip">Aksesoris</div></div>
+      <div class="grid2">
+        <div class="prod"><div class="img"></div><div class="nm">Tas Anyaman</div><div class="pr">Rp85.000</div></div>
+        <div class="prod"><div class="img"></div><div class="nm">Meja Kayu</div><div class="pr">Rp120.000</div></div>
+        <div class="prod"><div class="img"></div><div class="nm">Batik Tulis</div><div class="pr">Rp250.000</div></div>
+        <div class="prod"><div class="img"></div><div class="nm">Gerabah</div><div class="pr">Rp65.000</div></div>
+        <div class="prod"><div class="img"></div><div class="nm">Tas Rotan</div><div class="pr">Rp95.000</div></div>
+        <div class="prod"><div class="img"></div><div class="nm">Boneka</div><div class="pr">Rp45.000</div></div>
+      </div>
+    </div></div>
+    <div class="foot">Grid produk 2 kolom · foto · nama · harga · filter kategori</div>
+  </div>
+
+  <!-- DETAIL -->
+  <div class="page">
+    <div class="page-head">Detail Produk <a href="detail.html" style="color:#fff;float:right;font-size:11px;text-decoration:underline;">Buka &rarr;</a></div>
+    <div class="phone"><div class="screen">
+      <div class="bar">← <span>🛒</span></div>
+      <div class="big">Foto Produk</div>
+      <div class="lbl">Nama Produk</div>
+      <div style="font-size:11px;font-weight:700;">Tas Anyaman Bambu</div>
+      <div style="color:#0d9488;font-weight:800;font-size:13px;margin:3px 0;">Rp85.000</div>
+      <div class="lbl">Deskripsi</div>
+      <div style="font-size:9.5px;color:#6b7280;line-height:1.5;">Tas anyaman bambu khas Sidoarjo, dibuat tangan oleh pengrajin lokal...</div>
+      <button class="btn">+ Tambah ke Keranjang</button>
+    </div></div>
+    <div class="foot">Foto · nama · deskripsi · harga · tombol tambah ke keranjang</div>
+  </div>
+
+  <!-- CART -->
+  <div class="page">
+    <div class="page-head">Keranjang <a href="cart.html" style="color:#fff;float:right;font-size:11px;text-decoration:underline;">Buka &rarr;</a></div>
+    <div class="phone"><div class="screen">
+      <div class="bar">← Keranjang</div>
+      <div class="prod" style="padding:10px;text-align:left;">
+         <div style="display:flex;align-items:center;gap:8px;">
+           <div style="width:40px;height:40px;background:#e7f5f0;border-radius:6px;"></div>
+           <div><div style="font-weight:600;">Tas Anyaman</div><div style="color:#0d9488;">Rp85.000</div></div>
+           <div style="margin-left:auto;">− 1 +</div>
+         </div>
+      </div>
+      <div class="row"><span>Subtotal</span><b>Rp85.000</b></div>
+      <div class="row"><span>Ongkir</span><b>Rp10.000</b></div>
+      <div class="total"><span>Total</span><span>Rp95.000</span></div>
+      <div class="btn dark">CHECKOUT →</div>
+    </div></div>
+    <div class="foot">Produk · harga · jumlah +/− · subtotal · total · checkout</div>
+  </div>
+
+  <!-- CHECKOUT -->
+  <div class="page">
+    <div class="page-head">Checkout <a href="checkout.html" style="color:#fff;float:right;font-size:11px;text-decoration:underline;">Buka &rarr;</a></div>
+    <div class="phone"><div class="screen">
+      <div class="bar">← Checkout</div>
+      <div class="lbl">Nama Penerima</div><div class="field">Nama Lengkap</div>
+      <div class="lbl">Alamat</div><div class="field" style="height:34px;">Alamat lengkap...</div>
+      <div class="lbl">No. HP</div><div class="field">08xx-xxxx-xxxx</div>
+      <div class="row"><span>Tas Anyaman</span><span>Rp85.000</span></div>
+      <div class="row"><span>Ongkir</span><span>Rp10.000</span></div>
+      <div class="total"><span>Total</span><span>Rp95.000</span></div>
+      <div class="btn dark">BUAT PESANAN</div>
+    </div></div>
+    <div class="foot">Form nama · alamat · ringkasan pesanan · total · tombol pemesanan</div>
+  </div>
+
+  <!-- ADMIN -->
+  <div class="page">
+    <div class="page-head">Panel Admin <a href="admin.html" style="color:#fff;float:right;font-size:11px;text-decoration:underline;">Buka &rarr;</a></div>
+    <div class="phone"><div class="screen">
+      <div class="bar">⚙ Admin <span>Keluar</span></div>
+      <div class="chips"><div class="chip">+ Produk</div><div class="chip">📦 Produk</div><div class="chip">🧾 Pesanan</div></div>
+      <div class="grid2">
+        <div class="prod"><div class="img"></div><div class="nm">Tas Anyaman</div><div class="pr">✎ ⌫</div></div>
+        <div class="prod"><div class="img"></div><div class="nm">Batik Tulis</div><div class="pr">✎ ⌫</div></div>
+      </div>
+    </div></div>
+    <div class="foot">Kelola produk (tambah/edit/hapus) · kelola pesanan · localStorage</div>
+  </div>
+
+</div>
+<p class="note">📱 Wireframe versi <b>mobile-first</b> sesuai sketsa Figma. Ada juga versi login & register & admin. Detail interaksi disesuaikan saat sudah dibandingkan dengan wireframe Figma Anda.</p>
+</body>
+</html>

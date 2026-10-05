@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — Toko Kriya Sidoarjo</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="toastWrap"></div>
+
+<div class="min-h-screen flex items-center justify-center p-4" style="background:linear-gradient(135deg,#0d9488,#115e59);">
+  <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
+    <div class="flex justify-center mb-4"><div class="brand-mark w-14 h-14 text-2xl">K</div></div>
+    <h2 class="text-center text-2xl font-bold mb-1">Login Akun</h2>
+    <p class="text-center text-sm text-gray-500 mb-6">Masuk untuk berbelanja kerajinan khas Sidoarjo</p>
+
+    <form id="loginForm" novalidate>
+      <div class="mb-4">
+        <label class="lb" for="email">Email</label>
+        <input type="email" id="email" class="field" placeholder="nama@email.com">
+        <div class="err-msg" id="err-email">Email tidak valid.</div>
+      </div>
+      <div class="mb-4">
+        <label class="lb" for="password">Password</label>
+        <input type="password" id="password" class="field" placeholder="••••••••">
+        <div class="err-msg" id="err-pass">Password minimal 6 karakter.</div>
+      </div>
+      <button type="submit" class="btn-solid w-full">MASUK</button>
+    </form>
+
+    <div class="text-center mt-5 text-sm">
+      Belum punya akun? <a href="register.html" class="text-teal font-bold">Daftar</a>
+    </div>
+    <div class="text-center mt-2 text-sm text-gray-500">
+      Pemilik toko? <a href="#" onclick="return fillAdmin(event)" class="text-wood font-bold">Login sebagai Admin</a>
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+<script>
+function fillAdmin(e){ e.preventDefault(); document.getElementById('email').value=ADMIN_CRED.email; document.getElementById('password').value=ADMIN_CRED.password; }
+
+document.getElementById('loginForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const email=document.getElementById('email').value.trim();
+  const pass=document.getElementById('password').value;
+  const elemEmail=document.getElementById('email'), errEmail=document.getElementById('err-email');
+  const elemPass=document.getElementById('password'), errPass=document.getElementById('err-pass');
+  let ok=true;
+  const re=/\S+@\S+\.\S+/;
+  if(!re.test(email)){ elemEmail.classList.add('err'); errEmail.classList.add('show'); ok=false;} else { elemEmail.classList.remove('err'); errEmail.classList.remove('show');}
+  if(pass.length<6){ elemPass.classList.add('err'); errPass.classList.add('show'); ok=false;} else { elemPass.classList.remove('err'); errPass.classList.remove('show');}
+  if(!ok) return;
+  const res=loginUser(email,pass);
+  if(res.ok){ toast("Login berhasil!","success"); setTimeout(()=>location.href=res.role==="admin"?"admin.html":"index.html",600); }
+  else toast(res.msg,"error");
+});
+</script>
+</body>
+</html>

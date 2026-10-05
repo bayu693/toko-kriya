@@ -1,0 +1,258 @@
+/* ============================================
+   TOKO KRIYA SIDOARJO — custom.css
+   Moodboard: Teal #0d9488 + Cokelat Kayu #8b5a2b
+   Font: Poppins (heading) + Open Sans (body)
+   Gaya: Minimalis modern, mobile-first
+   ============================================ */
+
+:root {
+  --teal: #0d9488;
+  --teal-dark: #0f766e;
+  --teal-light: #ccfbf1;
+  --wood: #8b5a2b;
+  --wood-dark: #6b4423;
+  --ink: #1f2937;
+  --muted: #6b7280;
+  --bg: #f8fafc;
+  --border: #e5e7eb;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  margin: 0;
+}
+
+h1, h2, h3, h4, .font-head {
+  font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+}
+
+.text-teal { color: var(--teal); }
+.bg-teal { background-color: var(--teal); }
+.bg-teal-dark { background-color: var(--teal-dark); }
+.bg-wood { background-color: var(--wood); }
+.text-wood { color: var(--wood); }
+
+a { text-decoration: none; color: inherit; }
+
+/* ---------- Topbar / Navbar ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-link {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--ink);
+  transition: 0.2s;
+}
+.nav-link:hover { color: var(--teal); }
+.nav-link.active { color: var(--teal); background: var(--teal-light); }
+
+.brand-mark {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  color: #fff;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+.cart-badge {
+  position: absolute; top: -6px; right: -8px;
+  background: var(--wood);
+  color: #fff;
+  font-size: 11px; font-weight: 700;
+  min-width: 18px; height: 18px;
+  border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 4px;
+}
+
+/* ---------- Hero / Banner ---------- */
+.hero {
+  background: linear-gradient(135deg, #0d9488 0%, #115e59 100%);
+  color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+.hero .btn-hero {
+  background: #fff;
+  color: var(--teal-dark);
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  font-family: 'Poppins', sans-serif;
+}
+.slider-dot {
+  width: 8px; height: 8px; border-radius: 9999px;
+  background: rgba(255,255,255,.4);
+  cursor: pointer;
+  transition: .2s;
+}
+.slider-dot.active { background: #fff; width: 22px; }
+
+/* ---------- Card Produk ---------- */
+.prod-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+}
+.prod-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(13,148,136,.12);
+}
+.prod-img {
+  aspect-ratio: 4/3;
+  background: var(--teal-light);
+  display: flex; align-items: center; justify-content: center;
+}
+.prod-img img { width: 100%; height: 100%; object-fit: cover; }
+.prod-card .price { color: var(--teal); font-weight: 800; font-family: 'Poppins', sans-serif; }
+.btn-cart {
+  background: var(--teal);
+  color: #fff; font-weight: 700;
+  padding: 7px 12px; border-radius: 10px;
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 13px; transition: .2s;
+}
+.btn-cart:hover { background: var(--teal-dark); }
+
+/* ---------- Kategori chip ---------- */
+.cat-chip {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 14px; padding: 16px 10px;
+  transition: .2s; font-weight: 600; color: var(--ink);
+}
+.cat-chip:hover { border-color: var(--teal); color: var(--teal); box-shadow: 0 6px 16px rgba(13,148,136,.1); }
+.cat-chip img {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--teal-light);
+  padding: 10px;
+  object-fit: contain;
+  transition: .2s;
+}
+.cat-chip:hover img { background: var(--teal); }
+
+/* ---------- Buttons ---------- */
+.btn-solid {
+  background: var(--teal);
+  color: #fff; font-weight: 700;
+  border-radius: 12px; padding: 12px 20px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  transition: .2s; cursor: pointer; border: none; font-family: 'Poppins', sans-serif;
+}
+.btn-solid:hover { background: var(--teal-dark); }
+.btn-outline {
+  border: 2px solid var(--teal); color: var(--teal);
+  font-weight: 700; border-radius: 12px; padding: 10px 20px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  transition: .2s; cursor: pointer; background: transparent; font-family: 'Poppins', sans-serif;
+}
+.btn-outline:hover { background: var(--teal-light); }
+.btn-wood { background: var(--wood); color: #fff; }
+.btn-wood:hover { background: var(--wood-dark); }
+
+/* ---------- Form ---------- */
+.field {
+  width: 100%;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: .2s;
+  background: #fff;
+}
+.field:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(13,148,136,.15); }
+.field.err { border-color: #ef4444; }
+.err-msg { color: #ef4444; font-size: 12px; margin-top: 3px; display: none; }
+.err-msg.show { display: block; }
+label.lb { font-size: 13px; font-weight: 600; margin-bottom: 5px; display: block; }
+
+/* ---------- Cart qty ---------- */
+.qty-btn {
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-weight: 700; transition: .15s;
+}
+.qty-btn:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ---------- Section title ---------- */
+.sec-title { font-weight: 700; font-size: 22px; }
+.sec-sub { color: var(--muted); font-size: 14px; }
+
+/* ---------- Toast ---------- */
+#toastWrap { position: fixed; top: 70px; right: 16px; z-index: 100; display: flex; flex-direction: column; gap: 8px; }
+.toast {
+  background: #1f2937; color: #fff;
+  padding: 12px 18px; border-radius: 12px;
+  font-size: 14px; font-weight: 600;
+  box-shadow: 0 8px 20px rgba(0,0,0,.2);
+  animation: slideIn .3s ease;
+  max-width: 300px;
+}
+.toast.success { background: var(--teal); }
+.toast.error { background: #dc2626; }
+@keyframes slideIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+/* ---------- Admin ---------- */
+.sidebar-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px; border-radius: 10px;
+  font-weight: 600; color: var(--muted); transition: .2s; cursor: pointer;
+}
+.sidebar-link:hover { background: #fff; color: var(--teal); }
+.sidebar-link.active { background: var(--teal); color: #fff; }
+
+/* ---------- Table ---------- */
+.tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tbl th { text-align: left; padding: 12px; background: var(--teal-light); color: var(--teal-dark); font-family: 'Poppins', sans-serif; font-weight: 700; }
+.tbl td { padding: 12px; border-bottom: 1px solid var(--border); }
+.badge-status { padding: 4px 10px; border-radius: 9999px; font-size: 12px; font-weight: 700; }
+.badge-status.Proses { background: #fef3c7; color: #b45309; }
+.badge-status.Dikirim { background: #dbeafe; color: #1d4ed8; }
+.badge-status.Selesai { background: #d1fae5; color: #047857; }
+
+/* ---------- Footer ---------- */
+.footer { background: #0f172a; color: #cbd5e1; }
+.footer a { color: #94a3b8; }
+.footer a:hover { color: #fff; }
+
+/* ---------- Mobile nav ---------- */
+.mobile-menu {
+  display: none;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  padding: 12px 16px;
+  flex-direction: column; gap: 6px;
+}
+.mobile-menu.open { display: flex; }
+
+/* ---------- Responsive (mobile-first) ---------- */
+.hamburger { display: flex; }
+.nav-desktop { display: none; }
+
+@media (min-width: 768px) {
+  .hamburger { display: none; }
+  .nav-desktop { display: flex; }
+}

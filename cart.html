@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keranjang — Toko Kriya Sidoarjo</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="toastWrap"></div>
+
+<nav class="navbar">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="brand-mark">K</div>
+      <div class="leading-tight">
+        <div class="font-head font-bold text-lg" style="font-family:'Poppins'">Kriya <span class="text-teal">Sidoarjo</span></div>
+        <div class="text-[10px] text-gray-400 -mt-1">Kerajinan Tangan Asli</div>
+      </div>
+    </a>
+    <div class="nav-desktop items-center gap-1">
+      <a href="index.html" data-nav="index.html" class="nav-link">Beranda</a>
+      <a href="katalog.html" data-nav="katalog.html" class="nav-link">Katalog</a>
+      <a href="admin.html?tab=produk" class="nav-link">Admin</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="cart.html" class="relative p-2 hover:bg-gray-100 rounded-lg" title="Keranjang">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 4.6a1 1 0 00.9 1.4h13a1 1 0 00.9-1.4L17 13M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+        <span class="cart-badge" data-badge style="display:none">0</span>
+      </a>
+      <div id="navUser"></div>
+      <button id="hamburger" class="hamburger p-2 hover:bg-gray-100 rounded-lg">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="index.html" data-nav="index.html" class="nav-link">Beranda</a>
+    <a href="katalog.html" data-nav="katalog.html" class="nav-link">Katalog</a>
+    <a href="admin.html?tab=produk" class="nav-link">Admin</a>
+    <span id="navLinksMobile"></span>
+    <span id="navUserMobile"></span>
+  </div>
+</nav>
+
+<section class="max-w-6xl mx-auto px-4 py-8">
+  <h1 class="font-head text-2xl md:text-3xl font-bold mb-1">Keranjang Belanja</h1>
+  <p class="sec-sub mb-6">Periksa kembali pesanan Anda sebelum checkout</p>
+
+  <div id="cartWrap" class="flex flex-col lg:flex-row gap-8 items-start"></div>
+</section>
+
+<footer class="footer mt-14">
+  <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <div class="brand-mark bg-white text-teal">K</div>
+        <span class="font-head font-bold text-white">Kriya Sidoarjo</span>
+      </div>
+      <p class="text-sm text-gray-400">Toko kerajinan tangan asli dari Sidoarjo, Jawa Timur. Mendukung UMKM dan kerajinan lokal.</p>
+    </div>
+    <div>
+      <h4 class="font-head font-bold text-white mb-3">Menu</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="katalog.html">Katalog</a></li>
+        <li><a href="cart.html">Keranjang</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-head font-bold text-white mb-3">Kontak</h4>
+      <ul class="space-y-2 text-sm">
+        <li>📍 Sidoarjo, Jawa Timur</li>
+        <li>✉️ fadhillab69@gmail.com</li>
+        <li>📞 085736564735</li>
+        <li>🕗 Senin–Jumat 06.00–20.00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-gray-800 text-center text-xs text-gray-500 py-4">© 2026 Toko Kriya Sidoarjo. Proyek E-Commerce Kerajinan Tangan.</div>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+const ONGKIR = 10000;
+function cartRender(){
+  const cart = getCart();
+  const prods = getProducts();
+  const wrap = document.getElementById('cartWrap');
+
+  if(!cart.length){
+    let lsRaw = 'TIDAK BISA (terblokir)';
+    let cookieRaw = 'TIDAK ADA';
+    try { lsRaw = localStorage.getItem('tk_cart'); } catch(e){ lsRaw='ERROR: '+e.message; }
+    try {
+      const m = document.cookie.match(/(?:^|; )tk_cart=([^;]*)/);
+      cookieRaw = m ? decodeURIComponent(m[1]) : 'TIDAK ADA';
+    } catch(e){ cookieRaw='ERROR'; }
+    wrap.innerHTML = `<div class="w-full text-center py-16 text-gray-500">
+      <div class="text-6xl mb-4">🛒</div>
+      <h2 class="font-head text-xl font-bold text-gray-700 mb-2">Keranjang kosong</h2>
+      <p class="mb-6">Yuk isi keranjang dengan kerajinan tangan favoritmu.</p>
+      <a href="katalog.html" class="btn-solid">Lihat Katalog</a>
+      <details class="mt-6 mx-auto max-w-md text-left text-xs bg-gray-50 border rounded-xl p-4">
+        <summary class="cursor-pointer font-semibold text-gray-600">Debug penyimpanan</summary>
+        <p class="mt-2"><b>localStorage 'tk_cart':</b><br>${lsRaw}</p>
+        <p><b>cookie 'tk_cart':</b><br>${cookieRaw}</p>
+        <p><b>URL halaman:</b> ${location.href}</p>
+      </details>
+    </div>`;
+    return;
+  }
+
+  const rows = cart.map(item=>{
+    const p = prods.find(x=>x.id===item.id);
+    if(!p) return '';
+    return `
+    <div class="flex items-center gap-4 bg-white border rounded-2xl p-4">
+      <img src="assets/gambar-produk/${p.img}" alt="${p.nama}" class="w-20 h-20 rounded-xl object-cover">
+      <div class="flex-1 min-w-0">
+        <div class="font-semibold text-sm md:text-base truncate">${p.nama}</div>
+        <div class="text-sm text-gray-500">${formatRupiah(p.harga)}</div>
+        <div class="text-xs text-gray-400">Subtotal: <b>${formatRupiah(p.harga*item.qty)}</b></div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button class="qty-btn" onclick="changeQty(${p.id},-1)">−</button>
+        <span class="w-8 text-center font-bold">${item.qty}</span>
+        <button class="qty-btn" onclick="changeQty(${p.id},1)">+</button>
+      </div>
+      <button onclick="delItem(${p.id})" class="text-red-400 hover:text-red-600 p-2" title="Hapus">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.87 12.14A2 2 0 0116.14 21H7.86a2 2 0 01-1.99-1.86L5 7m5 4v6m4-6v6M9 7V4a1 1 0 011-1h4a1 1 0 011 1v3M4 7h16"/></svg>
+      </button>
+    </div>`;
+  }).join('');
+
+  const subtotal = cart.reduce((s,i)=>{ const p=prods.find(x=>x.id===i.id); return s+(p?p.harga*i.qty:0);},0);
+  const freeShip = subtotal >= 200000;
+  const ongkir = freeShip ? 0 : ONGKIR;
+  const total = subtotal + ongkir;
+
+  wrap.innerHTML = `
+    <div class="flex-1 w-full space-y-3">${rows}</div>
+    <div class="lg:w-80 w-full bg-white border rounded-2xl p-6 lg:sticky lg:top-24">
+      <h3 class="font-head font-bold text-lg mb-4">Ringkasan Belanja</h3>
+      <div class="flex justify-between text-sm mb-2"><span>Subtotal</span><b>${formatRupiah(subtotal)}</b></div>
+      <div class="flex justify-between text-sm mb-2"><span>Ongkir</span><b>${freeShip?'GRATIS':formatRupiah(ongkir)}</b></div>
+      ${freeShip?'<div class="text-xs bg-teal-light text-teal-dark px-2 py-1 rounded-lg mb-2">Selamat! Anda mendapat ongkir gratis 🎉</div>':''}
+      <div class="border-t mt-3 pt-3 flex justify-between font-head font-bold text-lg">
+        <span>Total</span><span class="text-teal">${formatRupiah(total)}</span>
+      </div>
+      <a href="checkout.html" class="btn-solid w-full mt-5">CHECKOUT</a>
+      <a href="katalog.html" class="text-center block mt-3 text-sm text-gray-500 hover:text-teal">+ Tambah produk lain</a>
+    </div>`;
+}
+window.changeQty=(id,d)=>{ updateQty(id,d); cartRender(); };
+window.delItem=(id)=>{ removeItem(id); toast("Produk dihapus dari keranjang"); cartRender(); };
+cartRender();
+</script>
+</body>
+</html>

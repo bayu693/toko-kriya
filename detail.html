@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detail Produk — Toko Kriya Sidoarjo</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="toastWrap"></div>
+
+<nav class="navbar">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="brand-mark">K</div>
+      <div class="leading-tight">
+        <div class="font-head font-bold text-lg" style="font-family:'Poppins'">Kriya <span class="text-teal">Sidoarjo</span></div>
+        <div class="text-[10px] text-gray-400 -mt-1">Kerajinan Tangan Asli</div>
+      </div>
+    </a>
+    <div class="nav-desktop items-center gap-1">
+      <a href="index.html" data-nav="index.html" class="nav-link">Beranda</a>
+      <a href="katalog.html" data-nav="katalog.html" class="nav-link">Katalog</a>
+      <a href="admin.html?tab=produk" class="nav-link">Admin</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="cart.html" class="relative p-2 hover:bg-gray-100 rounded-lg" title="Keranjang">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 4.6a1 1 0 00.9 1.4h13a1 1 0 00.9-1.4L17 13M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+        <span class="cart-badge" data-badge style="display:none">0</span>
+      </a>
+      <div id="navUser"></div>
+      <button id="hamburger" class="hamburger p-2 hover:bg-gray-100 rounded-lg">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="index.html" data-nav="index.html" class="nav-link">Beranda</a>
+    <a href="katalog.html" data-nav="katalog.html" class="nav-link">Katalog</a>
+    <a href="admin.html?tab=produk" class="nav-link">Admin</a>
+    <span id="navLinksMobile"></span>
+    <span id="navUserMobile"></span>
+  </div>
+</nav>
+
+<div id="detailWrap" class="max-w-6xl mx-auto px-4 py-8 grid md:grid-cols-2 gap-8 items-start">
+  <div>
+    <a href="katalog.html" class="text-sm text-gray-500 hover:text-teal inline-flex items-center gap-1 mb-3">← Kembali ke Katalog</a>
+    <div id="detailImg" class="rounded-2xl border overflow-hidden bg-teal-light"></div>
+  </div>
+  <div id="detailMeta"></div>
+</div>
+
+<section class="max-w-6xl mx-auto px-4 pb-14">
+  <h2 class="sec-title mb-5">Produk Lainnya</h2>
+  <div id="relatedList" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+</section>
+
+<footer class="footer mt-10">
+  <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <div class="brand-mark bg-white text-teal">K</div>
+        <span class="font-head font-bold text-white">Kriya Sidoarjo</span>
+      </div>
+      <p class="text-sm text-gray-400">Toko kerajinan tangan asli dari Sidoarjo, Jawa Timur. Mendukung UMKM dan kerajinan lokal.</p>
+    </div>
+    <div>
+      <h4 class="font-head font-bold text-white mb-3">Menu</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="katalog.html">Katalog</a></li>
+        <li><a href="cart.html">Keranjang</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-head font-bold text-white mb-3">Kontak</h4>
+      <ul class="space-y-2 text-sm">
+        <li>📍 Sidoarjo, Jawa Timur</li>
+        <li>✉️ fadhillab69@gmail.com</li>
+        <li>📞 085736564735</li>
+        <li>🕗 Senin–Jumat 06.00–20.00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-gray-800 text-center text-xs text-gray-500 py-4">© 2026 Toko Kriya Sidoarjo. Proyek E-Commerce Kerajinan Tangan.</div>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+const pid = parseInt(new URLSearchParams(location.search).get('id')) || 1;
+const p = getProducts().find(x=>x.id===pid);
+const imgWrap = document.getElementById('detailImg');
+const meta = document.getElementById('detailMeta');
+
+if(p){
+  imgWrap.innerHTML = `<img src="assets/gambar-produk/${p.img}" alt="${p.nama}" class="w-full aspect-[4/3] object-cover">`;
+  meta.innerHTML = `
+    <span class="inline-block text-xs font-semibold bg-teal-light text-teal-dark px-3 py-1 rounded-full mb-3">${p.kategori}</span>
+    <h1 class="font-head text-2xl md:text-3xl font-bold">${p.nama}</h1>
+    <div class="price text-2xl mt-2">${formatRupiah(p.harga)}</div>
+    <div class="text-sm text-gray-500 mb-3">Stok tersedia: <b class="text-gray-800">${p.stok}</b></div>
+    <p class="text-gray-600 leading-relaxed mb-5">${p.deskripsi}</p>
+    <div class="flex items-center gap-3 mb-5">
+      <label class="lb mb-0">Jumlah</label>
+      <div class="flex items-center gap-2">
+        <button class="qty-btn" onclick="qty(-1)">−</button>
+        <span id="qtySel" class="w-10 text-center font-bold">1</span>
+        <button class="qty-btn" onclick="qty(1)">+</button>
+      </div>
+      <span class="text-xs text-gray-400">Maks ${p.stok}</span>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-3">
+      <button class="btn-solid flex-1" onclick="buyNow(${p.id})">🛒 Beli Sekarang</button>
+      <button class="btn-outline flex-1" onclick="addSel(${p.id})">+ Tambah ke Keranjang</button>
+    </div>`;
+} else {
+  meta.innerHTML = `<h1 class="font-head text-2xl font-bold text-red-500">Produk tidak ditemukan.</h1>
+    <a href="katalog.html" class="btn-solid inline-block mt-4">Kembali ke Katalog</a>`;
+}
+
+let selQty=1;
+function qty(d){ const p0=getProducts().find(x=>x.id===pid); selQty=Math.max(1,Math.min(p0.stok,selQty+d)); document.getElementById('qtySel').textContent=selQty; }
+function addSel(id){ addToCart(id,selQty); }
+function buyNow(id){ addToCart(id,selQty); setTimeout(()=>location.href='cart.html',500); }
+
+const related = getProducts().filter(x=>x.id!==pid).slice(0,4);
+document.getElementById('relatedList').innerHTML = related.map(productCard).join('');
+</script>
+</body>
+</html>

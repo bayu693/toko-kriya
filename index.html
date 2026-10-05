@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toko Kriya Sidoarjo — Kerajinan Tangan Asli</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .slide { display:none; }
+  .slide.active { display:block; animation:fade .5s; }
+  @keyframes fade { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:none;} }
+</style>
+</head>
+<body>
+<div id="toastWrap"></div>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="brand-mark">K</div>
+      <div class="leading-tight">
+        <div class="font-head font-bold text-lg" style="font-family:'Poppins'">Kriya <span class="text-teal">Sidoarjo</span></div>
+        <div class="text-[10px] text-gray-400 -mt-1">Kerajinan Tangan Asli</div>
+      </div>
+    </a>
+
+    <div class="nav-desktop items-center gap-1" id="navLinksDesktop">
+      <a href="index.html" data-nav="index.html" class="nav-link">Beranda</a>
+      <a href="katalog.html" data-nav="katalog.html" class="nav-link">Katalog</a>
+      <a href="admin.html?tab=produk" data-nav="admin.html" class="nav-link">Admin</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="cart.html" class="relative p-2 hover:bg-gray-100 rounded-lg" title="Keranjang">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 4.6a1 1 0 00.9 1.4h13a1 1 0 00.9-1.4L17 13M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+        <span class="cart-badge" data-badge style="display:none">0</span>
+      </a>
+      <div id="navUser"></div>
+      <button id="hamburger" class="hamburger p-2 hover:bg-gray-100 rounded-lg">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="index.html" data-nav="index.html" class="nav-link">Beranda</a>
+    <a href="katalog.html" data-nav="katalog.html" class="nav-link">Katalog</a>
+    <a href="admin.html?tab=produk" class="nav-link">Admin</a>
+    <span id="navLinksMobile"></span>
+    <span id="navUserMobile"></span>
+  </div>
+</nav>
+
+<!-- Hero Banner Slider -->
+<section class="max-w-7xl mx-auto px-4 pt-6">
+  <div id="heroSlider" class="hero" style="min-height:300px;">
+    <div class="slide active p-8 md:p-14">
+      <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-3">Koleksi Baru</span>
+      <h1 class="font-head text-3xl md:text-5xl font-bold leading-tight">Kerajinan Tangan<br>Asli Sidoarjo</h1>
+      <p class="mt-3 text-white/85 max-w-md">Anyaman bambu, furniture kayu, dan batik tulis — dibuat dengan tangan oleh pengrajin lokal.</p>
+      <a href="katalog.html" class="btn-hero inline-block mt-6">Belanja Sekarang</a>
+    </div>
+    <div class="slide p-8 md:p-14" style="background:linear-gradient(135deg,#8b5a2b,#6b4423);">
+      <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-3">Promo Spesial</span>
+      <h1 class="font-head text-3xl md:text-5xl font-bold leading-tight">Diskon Hingga<br>30%</h1>
+      <p class="mt-3 text-white/85 max-w-md">Nikmati diskon khusus untuk produk anyaman dan aksesoris kulit selama bulan ini.</p>
+      <a href="katalog.html" class="btn-hero inline-block mt-6">Lihat Promo</a>
+    </div>
+    <div class="slide p-8 md:p-14" style="background:linear-gradient(135deg,#0f172a,#334155);">
+      <span class="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-3">Gratis Ongkir</span>
+      <h1 class="font-head text-3xl md:text-5xl font-bold leading-tight">Ongkir Gratis<br>Min. Belanja Rp200rb</h1>
+      <p class="mt-3 text-white/85 max-w-md">Untuk pengiriman di wilayah Jawa Timur. Syarat & ketentuan berlaku.</p>
+      <a href="katalog.html" class="btn-hero inline-block mt-6">Belanja Sekarang</a>
+    </div>
+    <div class="absolute bottom-4 right-4 flex gap-2" id="sliderDots"></div>
+  </div>
+</section>
+
+<!-- Kategori -->
+<section class="max-w-7xl mx-auto px-4 py-10">
+  <div class="flex items-end justify-between mb-5">
+    <div>
+      <h2 class="sec-title">Kategori Produk</h2>
+      <p class="sec-sub">Temukan kerajinan sesuai kebutuhan Anda</p>
+    </div>
+    <a href="katalog.html" class="text-teal font-semibold text-sm hidden md:inline">Lihat Semua &rarr;</a>
+  </div>
+  <div id="catList" class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto"></div>
+</section>
+
+<!-- Produk Unggulan -->
+<section class="max-w-7xl mx-auto px-4 pb-14">
+  <div class="flex items-end justify-between mb-5">
+    <div>
+      <h2 class="sec-title">Produk Unggulan</h2>
+      <p class="sec-sub">Pilihan favorit pembeli bulan ini</p>
+    </div>
+    <a href="katalog.html" class="text-teal font-semibold text-sm">Lihat Semua &rarr;</a>
+  </div>
+  <div id="featuredList" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+</section>
+
+<!-- Keunggulan -->
+<section class="max-w-7xl mx-auto px-4 pb-14">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="bg-white border rounded-2xl p-5 text-center">
+      <div class="text-3xl mb-2">✋</div>
+      <div class="font-head font-bold">100% Handmade</div>
+      <div class="text-sm text-gray-500 mt-1">Dibuat tangan pengrajin</div>
+    </div>
+    <div class="bg-white border rounded-2xl p-5 text-center">
+      <div class="text-3xl mb-2">🌿</div>
+      <div class="font-head font-bold">Bahan Alami</div>
+      <div class="text-sm text-gray-500 mt-1">Ramah lingkungan</div>
+    </div>
+    <div class="bg-white border rounded-2xl p-5 text-center">
+      <div class="text-3xl mb-2">🚚</div>
+      <div class="font-head font-bold">Terkirim Cepat</div>
+      <div class="text-sm text-gray-500 mt-1">Ke seluruh Indonesia</div>
+    </div>
+    <div class="bg-white border rounded-2xl p-5 text-center">
+      <div class="text-3xl mb-2">🛡️</div>
+      <div class="font-head font-bold">Garansi Kualitas</div>
+      <div class="text-sm text-gray-500 mt-1">Produk terjamin</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer mt-10">
+  <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <div class="brand-mark bg-white text-teal">K</div>
+        <span class="font-head font-bold text-white">Kriya Sidoarjo</span>
+      </div>
+      <p class="text-sm text-gray-400">Toko kerajinan tangan asli dari Sidoarjo, Jawa Timur. Mendukung UMKM dan kerajinan lokal.</p>
+    </div>
+    <div>
+      <h4 class="font-head font-bold text-white mb-3">Menu</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="katalog.html">Katalog</a></li>
+        <li><a href="cart.html">Keranjang</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-head font-bold text-white mb-3">Kontak</h4>
+      <ul class="space-y-2 text-sm">
+        <li>📍 Sidoarjo, Jawa Timur</li>
+        <li>✉️ fadhillab69@gmail.com</li>
+        <li>📞 085736564735</li>
+        <li>🕗 Senin–Jumat 06.00–20.00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-gray-800 text-center text-xs text-gray-500 py-4">© 2026 Toko Kriya Sidoarjo. Proyek E-Commerce Kerajinan Tangan.</div>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+/* Render kategori */
+const catMeta = {
+  "Anyaman":"cat-anyaman.svg","Furniture":"cat-kayu.svg","Batik":"cat-batik.svg","Aksesoris":"cat-kayu.svg"
+};
+const catList = document.getElementById('catList');
+CATEGORIES.filter(c=>c!=="Semua").forEach(c=>{
+  catList.innerHTML += `<a href="katalog.html?kat=${encodeURIComponent(c)}" class="cat-chip">
+    <img src="assets/gambar-produk/${catMeta[c]||'cat-anyaman.svg'}" alt="${c}">
+    <span>${c}</span></a>`;
+});
+
+/* Produk unggulan: 4 produk pertama (atau stok tinggi) */
+const feats = getProducts().slice(0,4);
+document.getElementById('featuredList').innerHTML = feats.map(productCard).join('');
+
+/* Slider */
+const slides = document.querySelectorAll('.hero .slide');
+const dotsWrap = document.getElementById('sliderDots');
+let cur = 0;
+slides.forEach((_,i)=>{
+  const d=document.createElement('div');
+  d.className='slider-dot'+(i===0?' active':'');
+  d.onclick=()=>show(i);
+  dotsWrap.appendChild(d);
+});
+function show(i){
+  slides[cur].classList.remove('active');
+  dotsWrap.children[cur].classList.remove('active');
+  cur=i;
+  slides[cur].classList.add('active');
+  dotsWrap.children[cur].classList.add('active');
+}
+setInterval(()=>show((cur+1)%slides.length),5000);
+</script>
+</body>
+</html>

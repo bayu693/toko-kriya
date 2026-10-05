@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — Toko Kriya Sidoarjo</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="toastWrap"></div>
+
+<nav class="navbar">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="brand-mark">K</div>
+      <div class="leading-tight">
+        <div class="font-head font-bold text-lg" style="font-family:'Poppins'">Kriya <span class="text-teal">Sidoarjo</span></div>
+        <div class="text-[10px] text-gray-400 -mt-1">Kerajinan Tangan Asli</div>
+      </div>
+    </a>
+    <div class="nav-desktop items-center gap-1">
+      <a href="index.html" data-nav="index.html" class="nav-link">Beranda</a>
+      <a href="katalog.html" data-nav="katalog.html" class="nav-link">Katalog</a>
+      <a href="admin.html?tab=produk" class="nav-link">Admin</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="cart.html" class="relative p-2 hover:bg-gray-100 rounded-lg" title="Keranjang">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 4.6a1 1 0 00.9 1.4h13a1 1 0 00.9-1.4L17 13M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/></svg>
+        <span class="cart-badge" data-badge style="display:none">0</span>
+      </a>
+      <div id="navUser"></div>
+      <button id="hamburger" class="hamburger p-2 hover:bg-gray-100 rounded-lg">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="index.html" data-nav="index.html" class="nav-link">Beranda</a>
+    <a href="katalog.html" data-nav="katalog.html" class="nav-link">Katalog</a>
+    <a href="admin.html?tab=produk" class="nav-link">Admin</a>
+    <span id="navLinksMobile"></span>
+    <span id="navUserMobile"></span>
+  </div>
+</nav>
+
+<section id="checkoutSection" class="max-w-6xl mx-auto px-4 py-8">
+  <h1 class="font-head text-2xl md:text-3xl font-bold mb-1">Checkout</h1>
+  <p class="sec-sub mb-6">Lengkapi data pemesan untuk menyelesaikan pesanan</p>
+
+  <div id="checkoutWrap"></div>
+</section>
+
+<section id="successSection" class="hidden max-w-xl mx-auto px-4 py-16 text-center">
+  <div class="w-20 h-20 mx-auto rounded-full bg-teal-light flex items-center justify-center mb-5">
+    <svg class="w-10 h-10 text-teal" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+  </div>
+  <h2 class="font-head text-2xl font-bold mb-2">Pesanan Berhasil!</h2>
+  <p class="text-gray-500 mb-1">Terima kasih telah berbelanja di Kriya Sidoarjo.</p>
+  <p class="text-gray-500 mb-6">Nomor pesanan Anda: <b id="orderNo" class="text-teal"></b></p>
+  <div class="bg-white border rounded-2xl p-6 mb-6 text-left" id="successSummary"></div>
+  <div class="flex flex-col sm:flex-row gap-3 justify-center">
+    <a href="index.html" class="btn-solid">Kembali ke Beranda</a>
+    <a href="katalog.html" class="btn-outline">Lanjut Belanja</a>
+  </div>
+</section>
+
+<footer class="footer mt-14">
+  <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <div class="brand-mark bg-white text-teal">K</div>
+        <span class="font-head font-bold text-white">Kriya Sidoarjo</span>
+      </div>
+      <p class="text-sm text-gray-400">Toko kerajinan tangan asli dari Sidoarjo, Jawa Timur. Mendukung UMKM dan kerajinan lokal.</p>
+    </div>
+    <div>
+      <h4 class="font-head font-bold text-white mb-3">Menu</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="katalog.html">Katalog</a></li>
+        <li><a href="cart.html">Keranjang</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-head font-bold text-white mb-3">Kontak</h4>
+      <ul class="space-y-2 text-sm">
+        <li>📍 Sidoarjo, Jawa Timur</li>
+        <li>✉️ fadhillab69@gmail.com</li>
+        <li>📞 085736564735</li>
+        <li>🕗 Senin–Jumat 06.00–20.00</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-gray-800 text-center text-xs text-gray-500 py-4">© 2026 Toko Kriya Sidoarjo. Proyek E-Commerce Kerajinan Tangan.</div>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+const ONGKIR = 10000;
+
+function renderCheckout(){
+  const cart = getCart();
+  const prods = getProducts();
+  const wrap = document.getElementById('checkoutWrap');
+
+  if(!cart.length){
+    wrap.innerHTML = `<div class="text-center py-16 text-gray-500">
+      <div class="text-6xl mb-4">🧾</div>
+      <p class="mb-4">Tidak ada produk untuk di-checkout.</p>
+      <a href="katalog.html" class="btn-solid">Menuju Katalog</a>
+    </div>`;
+    return;
+  }
+
+  const subtotal = cart.reduce((s,i)=>{ const p=prods.find(x=>x.id===i.id); return s+(p?p.harga*i.qty:0);},0);
+  const freeShip = subtotal >= 200000;
+  const ongkir = freeShip ? 0 : ONGKIR;
+  const total = subtotal + ongkir;
+
+  const rows = cart.map(i=>{ const p=prods.find(x=>x.id===i.id); if(!p)return ''; return `
+    <div class="flex justify-between text-sm mb-2">
+      <span>${p.nama} × ${i.qty}</span><b>${formatRupiah(p.harga*i.qty)}</b>
+    </div>`; }).join('');
+
+  const sess = getSession();
+
+  wrap.innerHTML = `
+  <div class="grid lg:grid-cols-5 gap-8 items-start">
+    <div class="lg:col-span-3 bg-white border rounded-2xl p-6">
+      <h3 class="font-head font-bold text-lg mb-5">Data Pemesan</h3>
+      <form id="checkoutForm" novalidate>
+        <div class="mb-4">
+          <label class="lb">Nama Lengkap</label>
+          <input type="text" id="cNama" class="field" value="${sess&&sess.nama!=='Admin Toko'?sess.nama:''}" placeholder="Nama lengkap pembeli">
+          <div class="err-msg" id="erNama">Nama minimal 3 karakter.</div>
+        </div>
+        <div class="mb-4">
+          <label class="lb">Email</label>
+          <input type="email" id="cEmail" class="field" value="${sess&&sess.email!=='admin@kriya.com'?sess.email:''}" placeholder="nama@email.com">
+          <div class="err-msg" id="erEmail">Email tidak valid.</div>
+        </div>
+        <div class="mb-4">
+          <label class="lb">No. HP</label>
+          <input type="tel" id="cHp" class="field" placeholder="08xxxxxxxxxx">
+          <div class="err-msg" id="erHp">Nomor HP minimal 10 digit.</div>
+        </div>
+        <div class="mb-4">
+          <label class="lb">Alamat Lengkap</label>
+          <textarea id="cAlamat" class="field" rows="3" placeholder="Jalan, RT/RW, Kelurahan, Kecamatan, Kota, Provinsi, Kode Pos"></textarea>
+          <div class="err-msg" id="erAlamat">Alamat minimal 10 karakter.</div>
+        </div>
+        <div class="mb-5">
+          <label class="lb">Metode Pembayaran</label>
+          <div id="payMethods" class="space-y-2"></div>
+        </div>
+        <button type="submit" class="btn-solid w-full">BUAT PESANAN</button>
+      </form>
+    </div>
+
+    <div class="lg:col-span-2 bg-white border rounded-2xl p-6 lg:sticky lg:top-24">
+      <h3 class="font-head font-bold text-lg mb-4">Ringkasan Pesanan</h3>
+      ${rows}
+      <div class="border-t mt-3 pt-3 flex justify-between text-sm mb-2"><span>Ongkir</span><b>${freeShip?'GRATIS':formatRupiah(ongkir)}</b></div>
+      <div class="flex justify-between font-head font-bold text-xl pt-2">
+        <span>Total</span><span class="text-teal">${formatRupiah(total)}</span>
+      </div>
+      <a href="cart.html" class="block text-center mt-4 text-sm text-gray-500 hover:text-teal">← Kembali ke Keranjang</a>
+    </div>
+  </div>`;
+
+  /* Payment methods */
+  const pays = ['Transfer Bank','E-Wallet (QRIS)','COD'];
+  document.getElementById('payMethods').innerHTML = pays.map((p,i)=>`
+    <label class="flex items-center gap-3 border rounded-xl p-3 cursor-pointer ${i===0?'border-teal bg-teal-light/30':''}">
+      <input type="radio" name="pay" value="${p}" ${i===0?'checked':''} class="accent-teal">
+      <span class="text-sm font-semibold">${p}</span>
+    </label>`).join('');
+  document.querySelectorAll('#payMethods input').forEach(r=>r.onchange=()=>{
+    document.querySelectorAll('#payMethods label').forEach(l=>l.classList.remove('border-teal','bg-teal-light/30'));
+    r.closest('label').classList.add('border-teal','bg-teal-light/30');
+  });
+
+  /* Submit */
+  document.getElementById('checkoutForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const nama=document.getElementById('cNama').value.trim();
+    const email=document.getElementById('cEmail').value.trim();
+    const hp=document.getElementById('cHp').value.trim();
+    const alamat=document.getElementById('cAlamat').value.trim();
+    const pay=document.querySelector('input[name=pay]:checked').value;
+    const re=/\S+@\S+\.\S+/;
+    const togg=(idEl,idEr,bad)=>{ document.getElementById(idEl).classList.toggle('err',bad); document.getElementById(idEr).classList.toggle('show',bad); };
+    let ok=true;
+    togg('cNama','erNama',nama.length<3); if(nama.length<3)ok=false;
+    togg('cEmail','erEmail',!re.test(email)); if(!re.test(email))ok=false;
+    togg('cHp','erHp',hp.replace(/\D/g,'').length<10); if(hp.replace(/\D/g,'').length<10)ok=false;
+    togg('cAlamat','erAlamat',alamat.length<10); if(alamat.length<10)ok=false;
+    if(!ok) return;
+
+    const order = {
+      id: 'KR-' + Date.now().toString().slice(-6),
+      nama, email, hp, alamat, pay,
+      items: cart.map(i=>{ const p=prods.find(x=>x.id===i.id); return {nama:p.nama, harga:p.harga, qty:i.qty, img:p.img}; }),
+      subtotal, ongkir, total,
+      status: 'Proses',
+      tanggal: new Date().toLocaleString('id-ID')
+    };
+    const orders = getOrders(); orders.unshift(order); setOrders(orders);
+    setCart([]);
+    showSuccess(order);
+  });
+}
+
+function showSuccess(order){
+  document.getElementById('checkoutSection').classList.add('hidden');
+  const s=document.getElementById('successSection');
+  s.classList.remove('hidden');
+  document.getElementById('orderNo').textContent = order.id;
+  document.getElementById('successSummary').innerHTML = `
+    <h4 class="font-head font-bold mb-3 text-gray-700">Ringkasan Pesanan</h4>
+    ${order.items.map(i=>`<div class="flex justify-between text-sm mb-1"><span>${i.nama} × ${i.qty}</span><b>${formatRupiah(i.harga*i.qty)}</b></div>`).join('')}
+    <div class="border-t mt-3 pt-3 flex justify-between text-sm"><span>Total dibayar</span><b class="text-teal font-bold">${formatRupiah(order.total)}</b></div>
+    <div class="border-t mt-3 pt-3 text-xs text-gray-500">
+      <p>👤 ${order.nama}</p>
+      <p>📞 ${order.hp}</p>
+      <p>📍 ${order.alamat}</p>
+      <p>💳 ${order.pay}</p>
+    </div>`;
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+renderCheckout();
+</script>
+</body>
+</html>
